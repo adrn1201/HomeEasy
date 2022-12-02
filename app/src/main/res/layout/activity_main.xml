@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/homeLabel3"
+        android:id="@+id/accessoriesLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="228dp"
@@ -36,7 +36,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/homeLabel2"
+        android:id="@+id/lightsLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="360dp"
@@ -50,7 +50,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
-        android:id="@+id/frameLayout4"
+        android:id="@+id/frameTemp"
         android:layout_width="91dp"
         android:layout_height="76dp"
         android:layout_marginStart="24dp"
@@ -72,7 +72,7 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/tempIcon"
             android:layout_width="27dp"
             android:layout_height="40dp"
             android:layout_marginLeft="3dp"
@@ -82,21 +82,21 @@
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/frameLayout"
+        android:id="@+id/frameHumidity"
         android:layout_width="91dp"
         android:layout_height="76dp"
         android:layout_marginTop="76dp"
         android:background="@drawable/rounded_corner"
-        app:layout_constraintEnd_toStartOf="@+id/frameLayout5"
+        app:layout_constraintEnd_toStartOf="@+id/frameMotion"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/frameLayout4"
+        app:layout_constraintStart_toEndOf="@+id/frameTemp"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tvTemp3"
+            android:id="@+id/tvHumidity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="33dp"
+            android:layout_marginStart="33dp"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="20dp"
             android:text="50%"
@@ -105,27 +105,27 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/humidityIcon"
             android:layout_width="26dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="6dp"
+            android:layout_marginStart="6dp"
             android:layout_marginTop="11dp"
             app:srcCompat="@drawable/humidity" />
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/frameLayout5"
+        android:id="@+id/frameMotion"
         android:layout_width="91dp"
         android:layout_height="76dp"
         android:layout_marginTop="76dp"
         android:background="@drawable/rounded_corner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/frameLayout"
+        app:layout_constraintStart_toEndOf="@+id/frameHumidity"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/motionIcon"
             android:layout_width="67dp"
             android:layout_height="59dp"
             android:layout_marginLeft="12dp"
@@ -153,10 +153,10 @@
         android:textSize="10sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout4" />
+        app:layout_constraintTop_toBottomOf="@+id/frameTemp" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tempLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -166,10 +166,10 @@
         android:textSize="10sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout4" />
+        app:layout_constraintTop_toBottomOf="@+id/frameTemp" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/humidityLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
@@ -179,10 +179,10 @@
         android:textSize="10sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/frameHumidity" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/motionLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -192,35 +192,35 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.597"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout5" />
+        app:layout_constraintStart_toEndOf="@+id/humidityLabel"
+        app:layout_constraintTop_toBottomOf="@+id/frameMotion" />
 
     <FrameLayout
-        android:id="@+id/frameLayout7"
+        android:id="@+id/frameSecurity"
         android:layout_width="98dp"
         android:layout_height="76dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/frame_corners"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeLabel3">
+        app:layout_constraintTop_toBottomOf="@+id/accessoriesLabel">
 
         <Switch
-            android:id="@+id/switch2"
+            android:id="@+id/securitySwitch"
             android:layout_width="wrap_content"
             android:layout_height="13dp"
             android:layout_marginLeft="28dp"
             android:layout_marginTop="43dp" />
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/securityIcon"
             android:layout_width="25dp"
             android:layout_height="35dp"
             android:layout_marginLeft="8dp"
             app:srcCompat="@drawable/security" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/securityLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="34dp"
@@ -230,7 +230,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/securityIndicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="34dp"
@@ -242,24 +242,24 @@
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/frameLayout8"
+        android:id="@+id/frameDoor"
         android:layout_width="98dp"
         android:layout_height="76dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="88dp"
         android:background="@drawable/frame_corners"
-        app:layout_constraintStart_toEndOf="@+id/frameLayout7"
-        app:layout_constraintTop_toBottomOf="@+id/textView6">
+        app:layout_constraintStart_toEndOf="@+id/frameSecurity"
+        app:layout_constraintTop_toBottomOf="@+id/humidityLabel">
 
         <Switch
-            android:id="@+id/switch1"
+            android:id="@+id/doorSwitch"
             android:layout_width="wrap_content"
             android:layout_height="13dp"
             android:layout_marginLeft="28dp"
             android:layout_marginTop="43dp" />
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/doorIcon"
             android:layout_width="39dp"
             android:layout_height="29dp"
             android:layout_marginLeft="8dp"
@@ -267,7 +267,7 @@
             app:srcCompat="@drawable/door_lock" />
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/doorLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="43dp"
@@ -277,7 +277,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView12"
+            android:id="@+id/doorIndicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="34dp"
@@ -289,18 +289,18 @@
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/frameLayout6"
+        android:id="@+id/frameSensor"
         android:layout_width="98dp"
         android:layout_height="76dp"
         android:layout_marginTop="88dp"
         android:background="@drawable/frame_corners"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.523"
-        app:layout_constraintStart_toEndOf="@+id/frameLayout8"
-        app:layout_constraintTop_toBottomOf="@+id/textView7">
+        app:layout_constraintStart_toEndOf="@+id/frameDoor"
+        app:layout_constraintTop_toBottomOf="@+id/motionLabel">
 
         <ImageView
-            android:id="@+id/imageView9"
+            android:id="@+id/sensorIcon"
             android:layout_width="32dp"
             android:layout_height="30dp"
             android:layout_marginTop="3dp"
@@ -308,7 +308,7 @@
             app:srcCompat="@drawable/sensor" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/sensorLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="43dp"
@@ -319,14 +319,14 @@
             android:textStyle="bold" />
 
         <Switch
-            android:id="@+id/switch3"
+            android:id="@+id/sensorSwitch"
             android:layout_width="wrap_content"
             android:layout_height="13dp"
             android:layout_marginLeft="28dp"
             android:layout_marginTop="43dp" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/sensorIndicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="34dp"
@@ -347,7 +347,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/frameLivingRoom"
         app:layout_constraintVertical_bias="0.111" />
 
     <TextView
@@ -362,11 +362,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.719"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/frameBedroom"
         app:layout_constraintVertical_bias="0.04" />
 
     <FrameLayout
-        android:id="@+id/frameLayout2"
+        android:id="@+id/frameBedroom"
         android:layout_width="47dp"
         android:layout_height="261dp"
 
@@ -375,10 +375,11 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toEndOf="@+id/frameLayout3"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout8">
+        app:layout_constraintStart_toEndOf="@+id/frameLivingRoom"
+        app:layout_constraintTop_toBottomOf="@+id/frameDoor">
 
         <com.google.android.material.slider.Slider
+            android:id="@+id/bedroomSlider"
             android:layout_width="259dp"
             android:layout_height="15dp"
             android:layout_gravity="center"
@@ -396,7 +397,7 @@
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/frameLayout3"
+        android:id="@+id/frameLivingRoom"
         android:layout_width="47dp"
         android:layout_height="261dp"
 
@@ -404,12 +405,13 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/frame_corners"
         android:orientation="vertical"
-        app:layout_constraintEnd_toStartOf="@+id/frameLayout2"
+        app:layout_constraintEnd_toStartOf="@+id/frameBedroom"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeLabel2">
+        app:layout_constraintTop_toBottomOf="@+id/lightsLabel">
 
         <com.google.android.material.slider.Slider
+            android:id="@+id/livingRoomSlider"
             android:layout_width="259dp"
             android:layout_height="15dp"
             android:layout_gravity="center"
@@ -427,23 +429,23 @@
     </FrameLayout>
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/lightIcon"
         android:layout_width="33dp"
         android:layout_height="35dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="105dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout6"
+        app:layout_constraintTop_toBottomOf="@+id/frameSensor"
         app:srcCompat="@drawable/light_bulb" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/lightIcon2"
         android:layout_width="33dp"
         android:layout_height="35dp"
         android:layout_marginTop="43dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/lightIcon"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout7"
+        app:layout_constraintTop_toBottomOf="@+id/frameSecurity"
         app:srcCompat="@drawable/light_bulb" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
