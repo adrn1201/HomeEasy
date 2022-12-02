@@ -1,3 +1,57 @@
 <resources>
     <string name="app_name">HomeEasy</string>
+    <!-- Security -->
+    <string name="component_parent_node">componentStatus</string>
+    <string name="component_child_secured">secured</string>
+    <string name="enabled">Enabled</string>
+    <string name="disabled">Disabled</string>
+    <string name="security_failed_toast">FAILED to set new Security Value</string>
+    <!-- Door -->
+    <string name="component_child_door">doorLocked</string>
+    <string name="locked">Locked</string>
+    <string name="unlocked">Unlocked</string>
+    <string name="door_failed_toast">FAILED to set new Door Lock Value</string>
+    <!-- Sensor -->
+    <string name="component_child_ldr">ldrEnabled</string>
+    <string name="sensor_failed_toast">FAILED to set new Sensor Value</string>
+    <!-- LED -->
+    <string name="led_parent_node">houseLED</string>
+    <string name="led_child_bedroom">bedroom</string>
+    <string name="led_child_livingRoom">livingRoom</string>
+    <string name="pwm_failed_toast">Failed to set PWM Data</string>
+    <!-- Colors -->
+    <string name="forest_green">#006400</string>
+    <string name="red">#FF0000</string>
+    <string name="black">#000000</string>
+    <!-- Snapshot Child Nodes -->
+    <string name="temp_child_node">sensor/temperature</string>
+    <string name="humidity_child_node">sensor/humidity</string>
+    <string name="motion_child_node">sensor/motion</string>
+    <string name="secured_child_node">componentStatus/secured</string>
+    <string name="doorLocked_child_node">componentStatus/doorLocked</string>
+    <string name="ldr_child_node">componentStatus/ldrEnabled</string>
+    <string name="listener_failed_toast">Failed to read data</string>
+    <!-- Assignments -->
+    <string name="temp_value">%s°C</string>
+    <string name="humidity_value">%s%%</string>
+    <!-- Motion -->
+    <string name="detected">Detected</string>
+    <string name="home_label">Home</string>
+    <string name="accessories_label">Accessories</string>
+    <string name="lights_label">Lights</string>
+    <string name="temperature_content_desc">temperature</string>
+    <string name="humidity_content_desc">humidity</string>
+    <string name="motion_content_desc">motion</string>
+    <string name="temperature_label">Temperature</string>
+    <string name="humidity_label">Humidity</string>
+    <string name="motion_label">Motion</string>
+    <string name="security_content_desc">security</string>
+    <string name="security_label">Security</string>
+    <string name="door_content_desc">door</string>
+    <string name="door_label">Door</string>
+    <string name="sensor_content_desc">sensor</string>
+    <string name="outdoor_sensor_label">Outdoor Sensor</string>
+    <string name="living_room_label">Living Room</string>
+    <string name="bedroom_label">Bedroom</string>
+    <string name="light">light</string>
 </resources>

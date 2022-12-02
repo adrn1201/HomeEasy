@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Home"
+        android:text="@string/home_label"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="228dp"
-        android:text="Accessories"
+        android:text="@string/accessories_label"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="360dp"
-        android:text="Lights"
+        android:text="@string/lights_label"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -66,7 +66,7 @@
             android:layout_marginStart="25dp"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="20dp"
-            android:text="00.0"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -77,7 +77,8 @@
             android:layout_height="40dp"
             android:layout_marginStart="1dp"
             android:layout_marginTop="19dp"
-            app:srcCompat="@drawable/temperature" />
+            app:srcCompat="@drawable/temperature"
+            android:contentDescription="@string/temperature_content_desc" />
 
     </FrameLayout>
 
@@ -99,7 +100,7 @@
             android:layout_marginStart="33dp"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="20dp"
-            android:text="50%"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -110,7 +111,8 @@
             android:layout_height="50dp"
             android:layout_marginStart="6dp"
             android:layout_marginTop="13dp"
-            app:srcCompat="@drawable/humidity" />
+            app:srcCompat="@drawable/humidity"
+            android:contentDescription="@string/humidity_content_desc" />
     </FrameLayout>
 
     <FrameLayout
@@ -128,9 +130,10 @@
             android:id="@+id/motionIcon"
             android:layout_width="67dp"
             android:layout_height="59dp"
-            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="5dp"
-            app:srcCompat="@drawable/motion_icon" />
+            app:srcCompat="@drawable/motion_icon"
+            android:contentDescription="@string/motion_content_desc" />
 
         <TextView
             android:id="@+id/motionIndicator"
@@ -138,7 +141,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="55dp"
-            android:text="Enabled"
+            android:text="@string/disabled"
+            android:textColor="@color/black"
             android:textSize="11sp" />
     </FrameLayout>
 
@@ -148,22 +152,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="4dp"
-        android:text="Temperature"
+        android:text="@string/temperature_label"
         android:textColor="@color/white"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameTemp" />
-
-    <TextView
-        android:id="@+id/tempLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="4dp"
-        android:text="Temperature"
-        android:textColor="@color/white"
-        android:textSize="10sp"
+        android:textSize="11sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameTemp" />
@@ -174,9 +165,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
         android:layout_marginTop="4dp"
-        android:text="Humidity"
+        android:text="@string/humidity_label"
         android:textColor="@color/white"
-        android:textSize="10sp"
+        android:textSize="11sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/frameHumidity" />
@@ -186,9 +177,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Motion"
+        android:text="@string/motion_label"
         android:textColor="@color/white"
-        android:textSize="10sp"
+        android:textSize="11sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.597"
@@ -209,23 +200,25 @@
             android:id="@+id/securitySwitch"
             android:layout_width="wrap_content"
             android:layout_height="13dp"
-            android:layout_marginLeft="28dp"
-            android:layout_marginTop="43dp" />
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="43dp"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <ImageView
             android:id="@+id/securityIcon"
             android:layout_width="25dp"
             android:layout_height="35dp"
-            android:layout_marginLeft="8dp"
-            app:srcCompat="@drawable/security" />
+            android:layout_marginStart="8dp"
+            app:srcCompat="@drawable/security"
+            android:contentDescription="@string/security_content_desc" />
 
         <TextView
             android:id="@+id/securityLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="34dp"
+            android:layout_marginStart="34dp"
             android:layout_marginTop="4dp"
-            android:text="Security"
+            android:text="@string/security_label"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
@@ -233,10 +226,11 @@
             android:id="@+id/securityIndicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="34dp"
+            android:layout_marginStart="34dp"
             android:layout_marginTop="28dp"
-            android:text="Enabled"
-            android:textSize="10sp"
+            android:text="@string/disabled"
+            android:textColor="#FF0000"
+            android:textSize="11sp"
             android:textStyle="bold" />
 
     </FrameLayout>
@@ -255,24 +249,26 @@
             android:id="@+id/doorSwitch"
             android:layout_width="wrap_content"
             android:layout_height="13dp"
-            android:layout_marginLeft="28dp"
-            android:layout_marginTop="43dp" />
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="43dp"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <ImageView
             android:id="@+id/doorIcon"
             android:layout_width="39dp"
             android:layout_height="29dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="3dp"
-            app:srcCompat="@drawable/door_lock" />
+            app:srcCompat="@drawable/door_lock"
+            android:contentDescription="@string/door_content_desc" />
 
         <TextView
             android:id="@+id/doorLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="43dp"
+            android:layout_marginStart="43dp"
             android:layout_marginTop="4dp"
-            android:text="Door"
+            android:text="@string/door_label"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
@@ -280,10 +276,11 @@
             android:id="@+id/doorIndicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="34dp"
+            android:layout_marginStart="34dp"
             android:layout_marginTop="28dp"
-            android:text="Locked"
-            android:textSize="10sp"
+            android:text="@string/unlocked"
+            android:textColor="#FF0000"
+            android:textSize="11sp"
             android:textStyle="bold" />
 
     </FrameLayout>
@@ -305,34 +302,37 @@
             android:layout_height="30dp"
             android:layout_marginTop="3dp"
             android:layout_marginStart="8dp"
-            app:srcCompat="@drawable/sensor" />
+            app:srcCompat="@drawable/sensor"
+            android:contentDescription="@string/sensor_content_desc" />
 
         <TextView
             android:id="@+id/sensorLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="43dp"
+            android:layout_marginStart="43dp"
             android:layout_marginTop="4dp"
-            android:text="Outdoor Sensor"
+            android:text="@string/outdoor_sensor_label"
             android:textColor="@color/black"
-            android:textSize="10sp"
+            android:textSize="11sp"
             android:textStyle="bold" />
 
         <Switch
             android:id="@+id/sensorSwitch"
             android:layout_width="wrap_content"
             android:layout_height="13dp"
-            android:layout_marginLeft="28dp"
-            android:layout_marginTop="43dp" />
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="43dp"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <TextView
             android:id="@+id/sensorIndicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="34dp"
+            android:layout_marginStart="34dp"
             android:layout_marginTop="28dp"
-            android:text="On"
-            android:textSize="10sp"
+            android:text="@string/disabled"
+            android:textColor="#FF0000"
+            android:textSize="11sp"
             android:textStyle="bold" />
     </FrameLayout>
 
@@ -342,7 +342,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="96dp"
         android:layout_marginTop="4dp"
-        android:text="Living Room"
+        android:text="@string/living_room_label"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -355,7 +355,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Bedroom"
+        android:text="@string/bedroom_label"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -436,7 +436,8 @@
         android:layout_marginEnd="105dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameSensor"
-        app:srcCompat="@drawable/light_bulb" />
+        app:srcCompat="@drawable/light_bulb"
+        android:contentDescription="@string/light" />
 
     <ImageView
         android:id="@+id/lightIcon2"
@@ -446,6 +447,7 @@
         app:layout_constraintEnd_toStartOf="@+id/lightIcon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameSecurity"
-        app:srcCompat="@drawable/light_bulb" />
+        app:srcCompat="@drawable/light_bulb"
+        android:contentDescription="@string/light" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

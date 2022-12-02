@@ -13,7 +13,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     private lateinit var textMsg: String
     private lateinit var textColor: String
-    private lateinit var toastMsg: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -24,71 +23,73 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.securitySwitch.setOnCheckedChangeListener { _, isChecked ->
-            setData(
+            setComponentData(
                 isChecked,
-                "secured",
-                "Enabled",
-                "Security is Enabled",
-                "Disabled",
-                "Security is Disabled",
-                "FAILED to set new Security Value",
+                getString(R.string.component_child_secured),
+                getString(R.string.enabled),
+                getString(R.string.disabled),
+                getString(R.string.security_failed_toast),
                 binding.securityIndicator
             )
         }
         binding.doorSwitch.setOnCheckedChangeListener { _, isChecked ->
-            setData(
+            setComponentData(
                 isChecked,
-                "doorLocked",
-                "Locked",
-                "Door is Locked",
-                "Unlocked",
-                "Door is Unlocked",
-                "FAILED to set new Door Lock Value",
+                getString(R.string.component_child_door),
+                getString(R.string.locked),
+                getString(R.string.unlocked),
+                getString(R.string.door_failed_toast),
                 binding.doorIndicator
             )
         }
         binding.sensorSwitch.setOnCheckedChangeListener { _, isChecked ->
-            setData(
+            setComponentData(
                 isChecked,
-                "ldrEnabled",
-                "Enabled",
-                "Sensor is Enabled",
-                "Disabled",
-                "Sensor is Disabled",
-                "FAILED to set new Sensor Value",
+                getString(R.string.component_child_ldr),
+                getString(R.string.enabled),
+                getString(R.string.disabled),
+                getString(R.string.sensor_failed_toast),
                 binding.sensorIndicator
             )
+        }
+        binding.bedroomSlider.addOnChangeListener { _, value, _ ->
+            setPwmLedData(value, getString(R.string.led_child_bedroom))
+        }
+        binding.livingRoomSlider.addOnChangeListener { _, value, _ ->
+            setPwmLedData(value, getString(R.string.led_child_livingRoom))
         }
         databaseListener()
     }
 
-    private fun setData(
+    private fun setPwmLedData(value: Float, childNode: String) {
+        database = FirebaseDatabase.getInstance().getReference(getString(R.string.led_parent_node))
+        database.child(childNode).setValue(value).addOnFailureListener {
+            Toast.makeText(this, getString(R.string.pwm_failed_toast), Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun setComponentData(
         isChecked: Boolean,
         childNode:String,
         checkedTxtMsg:String,
-        checkedToastMsg:String,
         unCheckedTxtMsg:String,
-        unCheckedToastMsg:String,
         failureMsg:String,
         txtView: TextView,
-        checkedTxtColor:String="#00FF00",
-        unCheckedTxtColor:String="#FF0000",
+        checkedTxtColor:String=getString(R.string.forest_green),
+        unCheckedTxtColor:String=getString(R.string.red),
     ) {
-        database = FirebaseDatabase.getInstance().getReference("componentStatus")
+        database = FirebaseDatabase.getInstance().getReference(getString(R.string.component_parent_node))
         database.child(childNode).setValue(isChecked).addOnSuccessListener {
             validateSwitchStatus(
                 isChecked,
                 checkedTxtMsg,
                 checkedTxtColor,
-                checkedToastMsg,
                 unCheckedTxtMsg,
                 unCheckedTxtColor,
-                unCheckedToastMsg,
                 txtView
             )
-            Toast.makeText(this, toastMsg, Toast.LENGTH_SHORT).show()
         }.addOnFailureListener {
-            Toast.makeText(this, failureMsg  , Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, failureMsg, Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -96,20 +97,16 @@ class MainActivity : AppCompatActivity() {
         isChecked: Boolean,
         checkedTxtMsg: String,
         checkedTxtColor: String,
-        checkedToastMsg: String,
         unCheckedTxtMsg: String,
         unCheckedTxtColor: String,
-        unCheckedToastMsg: String,
         txtView: TextView
     ) {
         if (isChecked) {
             textMsg = checkedTxtMsg
             textColor = checkedTxtColor
-            toastMsg = checkedToastMsg
         } else {
             textMsg = unCheckedTxtMsg
             textColor = unCheckedTxtColor
-            toastMsg = unCheckedToastMsg
         }
         txtView.text = textMsg
         txtView.setTextColor(Color.parseColor(textColor))
@@ -119,18 +116,18 @@ class MainActivity : AppCompatActivity() {
         database = FirebaseDatabase.getInstance().reference
         val postListener = object :  ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                val temperature = snapshot.child("sensor/temperature").value.toString()
-                val humidity = snapshot.child("sensor/humidity").value.toString()
-                val motion = snapshot.child("sensor/motion").value.toString()
-                val secured = snapshot.child("componentStatus/secured").value.toString()
-                val doorLock = snapshot.child("componentStatus/doorLocked").value.toString()
-                val ldr = snapshot.child("componentStatus/ldrEnabled").value.toString()
+                val temperature = snapshot.child(getString(R.string.temp_child_node)).value.toString()
+                val humidity = snapshot.child(getString(R.string.humidity_child_node)).value.toString()
+                val motion = snapshot.child(getString(R.string.motion_child_node)).value.toString()
+                val secured = snapshot.child(getString(R.string.secured_child_node)).value.toString()
+                val doorLock = snapshot.child(getString(R.string.doorLocked_child_node)).value.toString()
+                val ldr = snapshot.child(getString(R.string.ldr_child_node)).value.toString()
 
                 checkAndAssignListenerData(temperature, humidity, secured, doorLock, ldr, motion)
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@MainActivity, "Failed to read data", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, getString(R.string.listener_failed_toast), Toast.LENGTH_SHORT).show()
             }
         }
         database.addValueEventListener(postListener)
@@ -144,17 +141,17 @@ class MainActivity : AppCompatActivity() {
         ldr: String,
         motion: String
     ) {
-        binding.tvTemp.text = "$temperature°C"
-        binding.tvHumidity.text = "$humidity%"
+        binding.tvTemp.text = getString(R.string.temp_value, temperature)
+        binding.tvHumidity.text = getString(R.string.humidity_value, humidity)
 
         binding.securitySwitch.isChecked = secured == "true"
         binding.doorSwitch.isChecked = doorLock == "true"
         binding.sensorSwitch.isChecked = ldr == "true"
 
 
-        if (motion == "true" && secured == "true") motionTextBehavior("Detected", "#FF0000")
-        else if (motion == "false" && secured == "true") motionTextBehavior("Enabled", "#00FF00")
-        else motionTextBehavior("Disabled", "#000000")
+        if (motion == "true" && secured == "true") motionTextBehavior(getString(R.string.detected), getString(R.string.red))
+        else if (motion == "false" && secured == "true") motionTextBehavior(getString(R.string.enabled), getString(R.string.forest_green))
+        else motionTextBehavior(getString(R.string.disabled), getString(R.string.black))
     }
 
     private fun motionTextBehavior(msg:String, color:String) {
