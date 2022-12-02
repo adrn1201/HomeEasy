@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <style name= "labelStyle" parent ="Widget.MaterialComponents.Tooltip">
+        <item name = "backgroundTint">@color/label_background_color</item>
+        <item name ="shapeAppearanceOverlay">@style/roundCorner</item>
+    </style>
+    <style name ="roundCorner">
+        <item name ="cornerSize">15%</item>
+    </style>
+</resources>
