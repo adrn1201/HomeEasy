@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
+
         binding.securitySwitch.setOnCheckedChangeListener { _, isChecked ->
             setData(
                 isChecked,
@@ -82,10 +83,9 @@ class MainActivity : AppCompatActivity() {
                 checkedToastMsg,
                 unCheckedTxtMsg,
                 unCheckedTxtColor,
-                unCheckedToastMsg
+                unCheckedToastMsg,
+                txtView
             )
-            txtView.text = textMsg
-            txtView.setTextColor(Color.parseColor(textColor))
             Toast.makeText(this, toastMsg, Toast.LENGTH_SHORT).show()
         }.addOnFailureListener {
             Toast.makeText(this, failureMsg  , Toast.LENGTH_SHORT).show()
@@ -99,7 +99,8 @@ class MainActivity : AppCompatActivity() {
         checkedToastMsg: String,
         unCheckedTxtMsg: String,
         unCheckedTxtColor: String,
-        unCheckedToastMsg: String
+        unCheckedToastMsg: String,
+        txtView: TextView
     ) {
         if (isChecked) {
             textMsg = checkedTxtMsg
@@ -110,6 +111,8 @@ class MainActivity : AppCompatActivity() {
             textColor = unCheckedTxtColor
             toastMsg = unCheckedToastMsg
         }
+        txtView.text = textMsg
+        txtView.setTextColor(Color.parseColor(textColor))
     }
 
     private fun databaseListener() {
@@ -119,16 +122,11 @@ class MainActivity : AppCompatActivity() {
                 val temperature = snapshot.child("sensor/temperature").value.toString()
                 val humidity = snapshot.child("sensor/humidity").value.toString()
                 val motion = snapshot.child("sensor/motion").value.toString()
-                binding.tvTemp.text = "$temperature°C"
-                binding.tvHumidity.text = "$humidity%"
+                val secured = snapshot.child("componentStatus/secured").value.toString()
+                val doorLock = snapshot.child("componentStatus/doorLocked").value.toString()
+                val ldr = snapshot.child("componentStatus/ldrEnabled").value.toString()
 
-                if(motion == "true"){
-                    binding.motionIndicator.text = "Detected"
-                    binding.motionIndicator.setTextColor(Color.parseColor("#FF0000"))
-                } else{
-                    binding.motionIndicator.text = "Enabled"
-                    binding.motionIndicator.setTextColor(Color.parseColor("#00FF00"))
-                }
+                checkAndAssignListenerData(temperature, humidity, secured, doorLock, ldr, motion)
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -138,5 +136,29 @@ class MainActivity : AppCompatActivity() {
         database.addValueEventListener(postListener)
     }
 
+    private fun checkAndAssignListenerData(
+        temperature: String,
+        humidity: String,
+        secured: String,
+        doorLock: String,
+        ldr: String,
+        motion: String
+    ) {
+        binding.tvTemp.text = "$temperature°C"
+        binding.tvHumidity.text = "$humidity%"
 
+        binding.securitySwitch.isChecked = secured == "true"
+        binding.doorSwitch.isChecked = doorLock == "true"
+        binding.sensorSwitch.isChecked = ldr == "true"
+
+
+        if (motion == "true" && secured == "true") motionTextBehavior("Detected", "#FF0000")
+        else if (motion == "false" && secured == "true") motionTextBehavior("Enabled", "#00FF00")
+        else motionTextBehavior("Disabled", "#000000")
+    }
+
+    private fun motionTextBehavior(msg:String, color:String) {
+        binding.motionIndicator.text = msg
+        binding.motionIndicator.setTextColor(Color.parseColor(color))
+    }
 }

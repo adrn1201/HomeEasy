@@ -136,10 +136,10 @@
             android:id="@+id/motionIndicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="55dp"
             android:text="Enabled"
-            android:textSize="9sp" />
+            android:textSize="11sp" />
     </FrameLayout>
 
     <TextView
