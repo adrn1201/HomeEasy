@@ -63,7 +63,7 @@
             android:id="@+id/tvTemp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="27dp"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="20dp"
             android:text="00.0"
@@ -75,8 +75,8 @@
             android:id="@+id/tempIcon"
             android:layout_width="27dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="3dp"
-            android:layout_marginTop="17dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="19dp"
             app:srcCompat="@drawable/temperature" />
 
     </FrameLayout>
@@ -109,7 +109,7 @@
             android:layout_width="26dp"
             android:layout_height="50dp"
             android:layout_marginStart="6dp"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="13dp"
             app:srcCompat="@drawable/humidity" />
     </FrameLayout>
 
